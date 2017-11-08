@@ -50,6 +50,7 @@ public class Post_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_post_);
         mStorage = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
+        mProgerss = new ProgressDialog(this);
 
 
 
@@ -129,6 +130,7 @@ public class Post_Activity extends AppCompatActivity {
 
 
                     mProgerss.dismiss();
+                    startActivity(new Intent(Post_Activity.this,Main.class));
 
 
 

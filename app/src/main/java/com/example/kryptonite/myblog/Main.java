@@ -3,6 +3,8 @@ package com.example.kryptonite.myblog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,11 +12,21 @@ import android.widget.Toast;
 
 public class Main extends AppCompatActivity {
 
-    @Override
+    private RecyclerView mBlogList;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        mBlogList =(RecyclerView)findViewById(R.id.blog_list);
+        mBlogList.setHasFixedSize(true);
+        mBlogList.setLayoutManager(new LinearLayoutManager(this));
+ }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);

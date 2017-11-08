@@ -36,7 +36,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Click here to Upload Image"
+        android:text="Clik chin click lay"
         android:id="@+id/button"
         android:layout_above="@+id/etPostTitle"
         android:layout_alignLeft="@+id/etPostTitle"
