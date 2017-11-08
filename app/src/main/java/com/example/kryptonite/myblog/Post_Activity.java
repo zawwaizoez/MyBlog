@@ -52,7 +52,7 @@ public class Post_Activity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
 
 
-        mProgerss = new ProgressDialog(this);
+
 
         btnSubmit=(Button)findViewById(R.id.btnSubmit);
         btn = (Button) findViewById(R.id.button);
@@ -77,7 +77,7 @@ public class Post_Activity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "hhhhh", Toast.LENGTH_SHORT).show();
+
 
                 Intent intent = new Intent();
                 intent.setType("image/*");
@@ -126,11 +126,11 @@ public class Post_Activity extends AppCompatActivity {
                     newPost.child("desc").setValue(Description);
                     newPost.child("image url").setValue(downloadurl.toString());
 
-                    Toast.makeText(getApplicationContext(),"Uploading complete..",Toast.LENGTH_SHORT).show();
+
 
                     mProgerss.dismiss();
 
-                    startActivity(new Intent(Post_Activity.this,Main.class));
+
 
 
                 }
