@@ -42,21 +42,22 @@
         android:layout_alignLeft="@+id/etPostTitle"
         android:layout_alignStart="@+id/etPostTitle" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="159dp"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button2"
+        android:text="Submit Post"
+        android:id="@+id/btnSubmit"
+        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/etPostDescription"
-        android:layout_alignStart="@+id/etPostDescription" />
+        android:textColor="#f5f0f0" />
+
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageButton"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/button"
+        android:layout_alignLeft="@+id/btnSubmit"
+        android:layout_alignStart="@+id/btnSubmit" />
 
 </RelativeLayout>
