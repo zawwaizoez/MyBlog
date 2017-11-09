@@ -11,14 +11,21 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.w3c.dom.Text;
 
 public class Main extends AppCompatActivity {
 
     private RecyclerView mBlogList;
+    private DatabaseReference mDatabase;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Blog");
         mBlogList =(RecyclerView)findViewById(R.id.blog_list);
         mBlogList.setHasFixedSize(true);
         mBlogList.setLayoutManager(new LinearLayoutManager(this));
@@ -28,17 +35,33 @@ public class Main extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseRec
+
+            FirebaseRecyclerAdapter<Blog,BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Blog, BlogViewHolder>(
+                    Blog.class,
+                    R.layout.blog_row,
+                   BlogViewHolder.class,
+                    mDatabase
+
+            ) {
+                @Override
+                protected void populateViewHolder(BlogViewHolder viewHolder, Blog model, int position) {
+                    viewHolder.setTitle(model.getTitle());
+                    viewHolder.setDesc(model.getDesc());
+                }
+            };
+
+
+        mBlogList.setAdapter(firebaseRecyclerAdapter);
 
 
     }
 
-    public static class BlogViewHoler extends  RecyclerView.ViewHolder{
+    public static class BlogViewHolder extends  RecyclerView.ViewHolder{
         View mView;
 
-        public BlogViewHoler(View itemView) {
+        public BlogViewHolder(View itemView) {
             super(itemView);
-            itemView= mView;
+            mView=itemView;
         }
         public void setTitle(String title){
             TextView post_title =(TextView)mView.findViewById(R.id.post_title);
